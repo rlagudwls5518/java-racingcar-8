@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.play;
 
 public class Application {
     public static void main(String[] args) {
