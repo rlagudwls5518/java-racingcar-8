@@ -1,39 +1,29 @@
 package racingcar.model;
-import camp.nextstep.edu.missionutils.Randoms;
 import java.util.List;
-import java.util.stream.Collectors;
+import racingcar.model.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 
 public class RacingGame {
     private final OutputView outputView = new OutputView();
+    private final int MOVE_NUMBER = 4;
 
-    public void Racing(List<Car> cars, int tryCount){
-        for(int i=0; i<tryCount; i++){
-            for(Car car : cars){
-                moveCar(car);
-            }
-            outputView.printCarStatus(cars);
+    public void startRace(List<Car> cars, int tryCount){
+        for (int i = 0; i < tryCount; i++) {
+            playRound(cars);
         }
     }
-    public String winner(List<Car> cars){
-        int maxPosition = cars.stream()
-                .mapToInt(Car::getDistance)
-                .max()
-                .orElse(0);
-
-        String winners = cars.stream()
-                .filter(car -> car.getDistance() == maxPosition)
-                .map(Car::getName)
-                .collect(Collectors.joining(","));
-        return winners;
+    private void playRound(List<Car> cars) {
+        moveCars(cars);
+        outputView.printCarStatus(cars);
+    }
+    private void moveCars(List<Car> cars) {
+        for (Car car : cars) {
+            moveCar(car);
+        }
     }
     private void moveCar(Car car){
-        if(randomNumber()>=4){
+        if(RandomNumberGenerator.randomNumber()>=MOVE_NUMBER){
             car.plusDistance();
         }
-    }
-    private int randomNumber(){
-        return Randoms.pickNumberInRange(0, 9);
-
     }
 }

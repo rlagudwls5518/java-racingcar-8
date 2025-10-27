@@ -26,7 +26,7 @@ public class OutputView extends Printer {
         print(OUTPUT_PROMPT_WINNER);
         println(winner);
     }
-    private  void printDistance(Car car){
+    private void printDistance(Car car){
         for(int i=0; i<car.getDistance(); i++){
             print(OUTPUT_PROMPT_DISTANCE);
         }

@@ -1,10 +1,9 @@
 package racingcar.controller;
-
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarNameParsing;
 import racingcar.model.RacingGame;
-import racingcar.model.exception.CarNameValidator;
+import racingcar.model.util.WinnerCalculator;
 import racingcar.model.exception.TryCountValidator;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
@@ -30,15 +29,15 @@ public class GameController {
     public void gameStart(){
         outputView.printReadyMessage();
         String inputCarNames = inputView.input();
-        List<Car> cars = carNameParsing.listNameParsing(inputCarNames);
+        List<Car> cars = carNameParsing.parse(inputCarNames);
 
         outputView.printReadyTryCount();
         String tryCountInput = inputView.input();
         tryCountValidator.validate(tryCountInput);
-        int TryCount = Integer.parseInt(tryCountInput);
+        int tryCount = Integer.parseInt(tryCountInput);
 
-        game.Racing(cars, TryCount);
-        outputView.printResultMessage(game.winner(cars));
+        game.startRace(cars, tryCount);
+        outputView.printResultMessage(WinnerCalculator.calculateWinners(cars));
     }
 
 
