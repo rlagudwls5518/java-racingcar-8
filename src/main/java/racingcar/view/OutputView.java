@@ -1,4 +1,5 @@
 package racingcar.view;
+
 import java.util.List;
 import racingcar.model.Car;
 
@@ -9,25 +10,28 @@ public class OutputView extends Printer {
     private final String OUTPUT_PROMPT_WINNER = "최종 우승자 : ";
     private final String OUTPUT_PROMPT_DISTANCE = "-";
 
-    public void printReadyMessage(){
+    public void printReadyMessage() {
         println(INPUT_PROMPT_CARNAME);
     }
-    public void printReadyTryCount(){
+
+    public void printReadyTryCount() {
         println(INPUT_PROMPT_TRYCOUNT);
     }
 
-    public void printCarStatus(List<Car> cars){
-        for(Car car : cars){
+    public void printCarStatus(List<Car> cars) {
+        for (Car car : cars) {
             print(car.getName() + " : ");
             printDistance(car);
         }
     }
-    public void printResultMessage(String winner){
+
+    public void printResultMessage(String winner) {
         print(OUTPUT_PROMPT_WINNER);
         println(winner);
     }
-    private void printDistance(Car car){
-        for(int i=0; i<car.getDistance(); i++){
+
+    private void printDistance(Car car) {
+        for (int i = 0; i < car.getDistance(); i++) {
             print(OUTPUT_PROMPT_DISTANCE);
         }
         println("");

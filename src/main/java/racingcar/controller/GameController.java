@@ -1,4 +1,5 @@
 package racingcar.controller;
+
 import java.util.List;
 import racingcar.model.Car;
 import racingcar.model.CarNameParsing;
@@ -17,7 +18,7 @@ public class GameController {
     private final TryCountValidator tryCountValidator;
 
     public GameController(RacingGame game, CarNameParsing carNameParsing, InputView inputView, OutputView outputView,
-                          TryCountValidator tryCountValidator){
+                          TryCountValidator tryCountValidator) {
         this.game = game;
         this.carNameParsing = carNameParsing;
         this.inputView = inputView;
@@ -26,7 +27,7 @@ public class GameController {
     }
 
 
-    public void gameStart(){
+    public void gameStart() {
         outputView.printReadyMessage();
         String inputCarNames = inputView.input();
         List<Car> cars = carNameParsing.parse(inputCarNames);

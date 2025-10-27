@@ -15,8 +15,8 @@ public class Application {
         InputView inputView = new InputView();
         TryCountValidator tryCountValidator = new TryCountValidator();
 
-
-        GameController gameController = new GameController(game,carNameParsing, inputView, outputView,tryCountValidator);
+        GameController gameController = new GameController(game, carNameParsing, inputView, outputView,
+                tryCountValidator);
         gameController.gameStart();
     }
 }
