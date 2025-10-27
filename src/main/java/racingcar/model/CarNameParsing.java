@@ -1,25 +1,18 @@
 package racingcar.model;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import racingcar.model.exception.CarNameValidator;
 
 public class CarNameParsing {
-    private final String delimiter = ",";
+    private static final String DELIMITER = ",";
     private final CarNameValidator carNameValidator = new CarNameValidator();
 
-    public List<Car> listNameParsing(String inputText){
-        List<Car> carName = new ArrayList<>();
-        List<String> carNames = new ArrayList<>(Arrays.asList(inputText.split(delimiter)));
-
-        for(int i=0; i<carNames.size(); i++){
-            String name = carNames.get(i);
-            carNameValidator.validate(name);
-            carName.add(new Car(carNames.get(i)));
-        }
-        return carName;
+    public List<Car> parse(String input) {
+        return Arrays.stream(input.split(DELIMITER))
+                .map(String::trim)
+                .peek(carNameValidator::validate)
+                .map(Car::new)
+                .toList();
     }
-
-
 }
