@@ -13,7 +13,7 @@ public class CarNameValidator implements Validator{
         }
     }
     private void validateNameLength(String name){
-        if (name.length() >= 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException(ExceptionMessage.NAME_EXCEEDS_MAX_LENGTH + name);
         }
     }
