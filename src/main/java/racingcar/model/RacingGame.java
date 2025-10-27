@@ -1,6 +1,7 @@
 package racingcar.model;
 
 import java.util.List;
+import java.util.stream.IntStream;
 import racingcar.model.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 
@@ -9,20 +10,13 @@ public class RacingGame {
     private final int MOVE_NUMBER = 4;
 
     public void startRace(List<Car> cars, int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            playRound(cars);
-        }
+        IntStream.range(0, tryCount)
+                .forEach(i -> playRound(cars));
     }
 
     private void playRound(List<Car> cars) {
-        moveCars(cars);
+        cars.forEach(this::moveCar);
         outputView.printCarStatus(cars);
-    }
-
-    private void moveCars(List<Car> cars) {
-        for (Car car : cars) {
-            moveCar(car);
-        }
     }
 
     private void moveCar(Car car) {
