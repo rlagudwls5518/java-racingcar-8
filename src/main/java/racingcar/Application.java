@@ -9,10 +9,10 @@ import racingcar.view.OutputView;
 
 public class Application {
     public static void main(String[] args) {
-        RacingGame game = new RacingGame();
         CarNameParsing carNameParsing = new CarNameParsing();
         OutputView outputView = new OutputView();
         InputView inputView = new InputView();
+        RacingGame game = new RacingGame();
         TryCountValidator tryCountValidator = new TryCountValidator();
 
         GameController gameController = new GameController(game, carNameParsing, inputView, outputView,

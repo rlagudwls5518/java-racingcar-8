@@ -8,7 +8,7 @@ public class CarNameParsing {
     private static final String DELIMITER = ",";
     private final CarNameValidator carNameValidator = new CarNameValidator();
 
-    public List<Car> parse(String input) {
+    public List<Car> listNameParsing(String input) {
         return Arrays.stream(input.split(DELIMITER))
                 .map(String::trim)
                 .peek(carNameValidator::validate)

@@ -30,7 +30,7 @@ public class GameController {
     public void gameStart() {
         outputView.printReadyMessage();
         String inputCarNames = inputView.input();
-        List<Car> cars = carNameParsing.parse(inputCarNames);
+        List<Car> cars = carNameParsing.listNameParsing(inputCarNames);
 
         outputView.printReadyTryCount();
         String tryCountInput = inputView.input();
