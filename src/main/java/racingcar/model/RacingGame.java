@@ -6,7 +6,7 @@ import racingcar.model.util.RandomNumberGenerator;
 import racingcar.view.OutputView;
 
 public class RacingGame {
-    private final OutputView outputView = new OutputView();
+    private OutputView outputView = new OutputView();
     private final int MOVE_NUMBER = 4;
 
     public void startRace(List<Car> cars, int tryCount) {
@@ -15,12 +15,16 @@ public class RacingGame {
     }
 
     private void playRound(List<Car> cars) {
-        cars.forEach(this::moveCar);
+        cars.forEach(car -> {
+            int randomValue = RandomNumberGenerator.randomNumber();
+            moveCar(car, randomValue);
+        });
         outputView.printCarStatus(cars);
     }
 
-    private void moveCar(Car car) {
-        if (RandomNumberGenerator.randomNumber() >= MOVE_NUMBER) {
+
+    public void moveCar(Car car, int randomValue) {
+        if (randomValue >= MOVE_NUMBER) {
             car.plusDistance();
         }
     }
