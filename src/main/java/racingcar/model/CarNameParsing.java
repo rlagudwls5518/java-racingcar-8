@@ -3,11 +3,11 @@ package racingcar.model;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import racingcar.model.exception.Exception;
+import racingcar.model.exception.CarNameValidator;
 
 public class CarNameParsing {
     private final String delimiter = ",";
-    private final Exception exception = new Exception();
+    private final CarNameValidator carNameValidator = new CarNameValidator();
 
     public List<Car> listNameParsing(String inputText){
         List<Car> carName = new ArrayList<>();
@@ -15,10 +15,9 @@ public class CarNameParsing {
 
         for(int i=0; i<carNames.size(); i++){
             String name = carNames.get(i);
-            exception.exceptionCarNameCheck(name);
+            carNameValidator.validate(name);
             carName.add(new Car(carNames.get(i)));
         }
-
         return carName;
     }
 
